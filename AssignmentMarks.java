@@ -6,7 +6,9 @@
  * @version (5/09/2023)
  */
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
 public class AssignmentMarks
 {
     public static void main(String[] args) {
@@ -16,8 +18,7 @@ public class AssignmentMarks
         double highestMark;
         double total = 0;
         double mean;
-        
-        
+
         // F1: Allows the user to input the name of the assignment.
         Scanner input = new Scanner(System.in);
         System.out.print("Please enter the name of the assignment: ");
@@ -27,17 +28,22 @@ public class AssignmentMarks
         for (int i = 0; i < marks.length; i++) {
             boolean isValid = false;
             while (!isValid) {
+                try {
+                    System.out.print("Please input the mark for student no " + (i + 1) + " : ");
+                    double mark = input.nextDouble();
+                    input.nextLine(); 
 
-                System.out.print("Please input the mark for student no " + (i + 1) + " : ");
-                double mark = input.nextDouble();
-                input.nextLine(); 
+                    //F3:  Input Validation and Error Messages
+                    if (mark >= 0 && mark <= 30) {
+                        marks[i] = mark;
+                        isValid = true;
+                    } else {
+                        System.out.println("Invalid input! The mark should be between 0 and 30.");
 
-                //F3:  Input Validation and Error Messages
-                if (mark >= 0 && mark <= 30) {
-                    marks[i] = mark;
-                    isValid = true;
-                } else {
-                    System.out.println("Invalid input! The mark should be between 0 and 30.");
+                    }
+                }catch (InputMismatchException e) {
+                    System.out.println("Please enter a valid number for the mark.");
+                    input.nextLine(); // Clear the scanner buffer
                 }
 
             }
@@ -51,7 +57,7 @@ public class AssignmentMarks
             System.out.print(mark + " | ");
         }
         System.out.println();
-        
+
         // F5: Display the least and highest marks
         leastMark = marks[0];
         highestMark = marks[0];
@@ -61,14 +67,14 @@ public class AssignmentMarks
         }
         System.out.println("Lowest Mark: " + leastMark);
         System.out.println("Highest Mark: " + highestMark);
-    
+
         // F6: Calculate and display average and standard deviation
         for (double mark : marks) {
             total += mark;
         }
         mean = total / marks.length;
         System.out.println("Mean Mark: "+ mean);
-        
+
         // Close scanner to prevent resource leak
         input.close();
     }
