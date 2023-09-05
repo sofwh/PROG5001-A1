@@ -11,10 +11,15 @@ public class AssignmentMarks
 {
     public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in);
         double[] marks = new double[30];
-
+        double leastMark;
+        double highestMark;
+        double total = 0;
+        double mean;
+        
+        
         // F1: Allows the user to input the name of the assignment.
+        Scanner input = new Scanner(System.in);
         System.out.print("Please enter the name of the assignment: ");
         String assignmentName = input.nextLine();
 
@@ -23,7 +28,7 @@ public class AssignmentMarks
             boolean isValid = false;
             while (!isValid) {
 
-                System.out.print("Please input the mark for student " + (i + 1) + " (0-30): ");
+                System.out.print("Please input the mark for student no " + (i + 1) + " : ");
                 double mark = input.nextDouble();
                 input.nextLine(); 
 
@@ -46,5 +51,25 @@ public class AssignmentMarks
             System.out.print(mark + " | ");
         }
         System.out.println();
+        
+        // F5: Display the least and highest marks
+        leastMark = marks[0];
+        highestMark = marks[0];
+        for (double mark : marks) {
+            if (mark < leastMark) leastMark = mark;
+            if (mark > highestMark) highestMark = mark;
+        }
+        System.out.println("Lowest Mark: " + leastMark);
+        System.out.println("Highest Mark: " + highestMark);
+    
+        // F6: Calculate and display average and standard deviation
+        for (double mark : marks) {
+            total += mark;
+        }
+        mean = total / marks.length;
+        System.out.println("Mean Mark: "+ mean);
+        
+        // Close scanner to prevent resource leak
+        input.close();
     }
 }
