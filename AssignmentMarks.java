@@ -75,6 +75,19 @@ public class AssignmentMarks
         mean = total / marks.length;
         System.out.println("Mean Mark: "+ mean);
 
+        //For Standard Deviation
+        double sumOfSquares = 0.0;
+        for (double mark : marks) {
+            double difference = mark - mean;
+            sumOfSquares += difference * difference;
+        }
+
+        double variance = sumOfSquares / marks.length;
+        double standardDeviation = Math.sqrt(variance);
+
+
+        System.out.println("Standard Deviation: " + standardDeviation);
+        
         // Close scanner to prevent resource leak
         input.close();
     }
