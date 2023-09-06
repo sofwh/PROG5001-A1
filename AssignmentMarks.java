@@ -50,11 +50,12 @@ public class AssignmentMarks
         }
 
         // F4: Prints the assignment name and the entered student marks on the screen.
-        System.out.println("\n--- Assignment Statistics ---");
-        System.out.println(" Assignment Name: " +  " --- " +assignmentName+ " --- ");
+        System.out.println(" --- Assignment Statistics ---");
+        System.out.println(" Assignment Name: "+assignmentName );
         System.out.print("Entered Marks : ");
-        for (double mark : marks) {
-            System.out.print(mark + " | ");
+        System.out.println();
+        for (int i = 0; i < marks.length; i++) {
+            System.out.println("Student " + (i + 1) + ": " + marks[i]);
         }
         System.out.println();
 
@@ -73,21 +74,19 @@ public class AssignmentMarks
             total += mark;
         }
         mean = total / marks.length;
-        System.out.println("Mean Mark: "+ mean);
+        System.out.printf("Mean Mark: %.2f\n ", mean);
 
         //For Standard Deviation
-        double sumOfSquares = 0.0;
+        double sumOfSquaredDifferences = 0.0;
         for (double mark : marks) {
             double difference = mark - mean;
-            sumOfSquares += difference * difference;
+            sumOfSquaredDifferences += difference * difference;
         }
 
-        double variance = sumOfSquares / marks.length;
+        double variance = sumOfSquaredDifferences / marks.length;
         double standardDeviation = Math.sqrt(variance);
 
-
-        System.out.println("Standard Deviation: " + standardDeviation);
-        
+        System.out.printf("Standard Deviation: %.2f\n", standardDeviation);
         // Close scanner to prevent resource leak
         input.close();
     }
