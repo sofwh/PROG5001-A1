@@ -1,9 +1,9 @@
 
 /**
- * Write a description of class AssignmentMarks here.
+ * This Java application calculates and displays statistics related to student marks for an assignment.
  *
  * @author (Sirjan Baniya)
- * @version (5/09/2023)
+ * @version (1.1)
  */
 
 import java.util.InputMismatchException;
@@ -69,10 +69,11 @@ public class AssignmentMarks
         System.out.println("Lowest Mark: " + leastMark);
         System.out.println("Highest Mark: " + highestMark);
 
-        // F6: Calculate and display average and standard deviation
+        // F6: Calculate and display mean and standard deviation
         for (double mark : marks) {
             total += mark;
         }
+        //For Standard Deviation
         mean = total / marks.length;
         System.out.printf("Mean Mark: %.2f\n ", mean);
 
