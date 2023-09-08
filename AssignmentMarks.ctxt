@@ -2,4 +2,14 @@
 comment0.target=AssignmentMarks
 comment1.params=args
 comment1.target=void\ main(java.lang.String[])
-numComments=2
+comment2.params=
+comment2.target=java.lang.String\ getAssignmentName()
+comment3.params=
+comment3.target=double[]\ getStudentMarks()
+comment4.params=assignmentName\ marks
+comment4.target=void\ printAssignmentAndMarks(java.lang.String,\ double[])
+comment5.params=marks
+comment5.target=void\ printLowestAndHighestMarks(double[])
+comment6.params=marks
+comment6.target=void\ printMeanAndStandardDeviation(double[])
+numComments=7
