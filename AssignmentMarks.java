@@ -1,3 +1,10 @@
+
+/**
+ * This Java application calculates and displays statistics related to student marks for an assignment
+ *
+ * @author (Sirjan Baniya)
+ * @version (1.1)
+ */
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -8,6 +15,7 @@ public class AssignmentMarks {
         printAssignmentAndMarks(assignmentName, marks);
         printLowestAndHighestMarks(marks);
         printMeanAndStandardDeviation(marks);
+        
     }
 
     // F1: Get the assignment name
